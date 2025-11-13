@@ -22,7 +22,7 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
-        * {
+        {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -41,7 +41,7 @@
             color: var(--dark);
         }
         
-        /* Header Styles */
+        
         .top-header {
             background-color: var(--primary);
             color: white;
@@ -205,7 +205,7 @@
             color: var(--primary);
         }
         
-        /* Hero Section - More Visible */
+       
         .hero-section {
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), 
             url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
@@ -767,7 +767,7 @@
             </div>
         </div>
         
-        <!-- Professional Navigation - Fixed Colors -->
+        <!--Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1452,7 +1452,7 @@
                     const productName = productCard.querySelector('h5').textContent;
                     alert(`${productName} added to cart!`);
                     
-                    // In a real implementation, you would update the cart count here
+                   
                 });
             });
             
@@ -1465,7 +1465,7 @@
                     const productName = productCard.querySelector('h5').textContent;
                     alert(`${productName} added to wishlist!`);
                     
-                    // In a real implementation, you would update the wishlist count here
+                  
                 });
             });
             
@@ -1477,7 +1477,7 @@
                     const searchTerm = this.querySelector('input').value;
                     if (searchTerm.trim() !== '') {
                         alert(`Searching for: ${searchTerm}`);
-                        // In a real implementation, you would redirect to search results page
+                   
                     }
                 });
             }
