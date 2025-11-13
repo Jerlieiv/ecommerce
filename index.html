@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MalawiMart | Premium Online Shopping</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #e53e3e;
+            --accent: #ed8936;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gray: #718096;
+            --light-gray: #e2e8f0;
+            --text: #4a5568;
+            --border: #cbd5e0;
+            --surface: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Header Styles */
+        .top-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+        
+        .top-header a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .top-header a:hover {
+            color: var(--accent);
+        }
+        
+        .main-header {
+            background-color: var(--surface);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .main-header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .search-form {
+            position: relative;
+            max-width: 500px;
+        }
+        
+        .search-form input {
+            border-radius: 30px;
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .search-form input:focus {
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .search-form button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-form button:hover {
+            background-color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .header-icons a {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-left: 15px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .header-icons a:hover {
+            color: var(--primary);
+        }
+        
+        .header-icons .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+    
+        .navbar {
+            padding: 0;
+            background-color: var(--surface) !important;
+            border-top: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 15px 20px !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link:hover, 
+        .navbar-nav .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        .navbar-nav .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 3px;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover:after,
+        .navbar-nav .nav-link.active:after {
+            transform: scaleX(1);
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 10px 0;
+            background-color: var(--surface);
+        }
+        
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+            color: var(--dark);
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(26, 54, 93, 0.1);
+            color: var(--primary);
+        }
+        
+        /* Hero Section - More Visible */
+        .hero-section {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), 
+            url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2d3748;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 54, 93, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c53030;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+        }
+        
+        .btn-outline-light {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+        
+        /* Categories Section */
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .category-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img {
+            transform: scale(1.05);
+        }
+        
+        .category-content {
+            padding: 20px;
+            background-color: var(--surface);
+        }
+        
+        .category-content h5 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        /* Products Section */
+        .product-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+        
+        .product-actions a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--surface);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: 8px;
+            color: var(--dark);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .product-actions a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h5 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .product-old-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin: 8px 0;
+        }
+        
+        /* Banner Section */
+        .banner-section {
+            margin: 60px 0;
+        }
+        
+        .banner {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .banner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+        }
+        
+        .banner-content {
+            max-width: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        /* Latest Products Carousel */
+        .latest-products {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .carousel-container {
+            position: relative;
+        }
+        
+        .carousel-control-prev, .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+        
+        .carousel-control-prev {
+            left: -25px;
+        }
+        
+        .carousel-control-next {
+            right: -25px;
+        }
+        
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background-color: var(--secondary);
+            opacity: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 70px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .footer .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Scroll Up Button */
+        .scroll-up-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .scroll-up-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-up-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            border-bottom: none;
+            padding: 20px 25px;
+        }
+        
+        .modal-header .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .product-modal-img {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .product-modal-img img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .product-modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        .product-modal-description {
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+        
+        .product-details-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .product-details-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .product-details-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            
+            .banner-content {
+                max-width: 100%;
+            }
+            
+            .banner h3 {
+                font-size: 1.6rem;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 10px 15px !important;
+            }
+            
+            .carousel-control-prev, .carousel-control-next {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-envelope me-1"></i> info@malawimart.com
+                        </div>
+                        <div>
+                            <i class="fas fa-phone me-1"></i> +265 888 123 456
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end">
+                        <div class="me-3">
+                            <a href="#"><i class="fas fa-map-marker-alt me-1"></i> Store Locator</a>
+                        </div>
+                        <div class="me-3">
+                            <a href="#"><i class="fas fa-question-circle me-1"></i> Help</a>
+                        </div>
+                        <div>
+                            <a href="#"><i class="fas fa-user me-1"></i> Login / Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center py-3">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <a href="index.html" class="logo"><i class="fas fa-shopping-bag"></i> Malawi<span>Mart</span></a>
+                </div>
+                <div class="col-lg-6 col-md-8 d-none d-md-block">
+                    <form class="search-form">
+                        <input type="text" class="form-control" placeholder="Search for products...">
+                        <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-md-12 col-6 text-end">
+                    <div class="header-icons d-flex justify-content-end">
+                        <a href="#" class="position-relative">
+                            <i class="fas fa-heart"></i>
+                            <span class="badge">3</span>
+                        </a>
+                        <a href="#" class="position-relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge">5</span>
+                        </a>
+                        <a href="#" class="d-md-none">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Navigation - Fixed Colors -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Electronics</a></li>
+                                <li><a class="dropdown-item" href="#">Fashion</a></li>
+                                <li><a class="dropdown-item" href="#">Home & Garden</a></li>
+                                <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
+                                <li><a class="dropdown-item" href="#">Sports & Outdoors</a></li>
+                                <li><a class="dropdown-item" href="#">Automotive</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Brands</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a></li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-primary">Sell on MalawiMart</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section - More Visible -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1>Shop the Best Products in Malawi</h1>
+                        <p>Discover amazing deals on electronics, fashion, home goods and more. Fast delivery across Malawi with secure payment options.</p>
+                        <a href="#" class="btn btn-primary">Shop Now</a>
+                        <a href="#" class="btn btn-outline-light ms-2">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- Illustration would go here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section py-5">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                        <div class="category-content">
+                            <h5>Electronics</h5>
+                            <p class="text-muted">200+ products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');"></div>
+                        <div class="category-content">
+                            <h5>Fashion</h5>
+                            <p class="text-muted">350+ products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80');"></div>
+                        <div class="category-content">
+                            <h5>Home & Garden</h5>
+                            <p class="text-muted">180+ products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1479&q=80');"></div>
+                        <div class="category-content">
+                            <h5>Health & Beauty</h5>
+                            <p class="text-muted">120+ products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                            <span class="product-badge">Sale</span>
+                            <div class="product-actions">
+                                <a href="#"><i class="fas fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal1"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h5>Wireless Headphones</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted ms-1">(24)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="product-price">MK 45,000</div>
+                                <div class="product-old-price">MK 60,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80');">
+                            <div class="product-actions">
+                                <a href="#"><i class="fas fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal2"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h5>Smart Watch</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-1">(18)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="product-price">MK 85,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80');">
+                            <span class="product-badge">New</span>
+                            <div class="product-actions">
+                                <a href="#"><i class="fas fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal3"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h5>Bluetooth Speaker</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-muted ms-1">(32)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="product-price">MK 35,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                            <div class="product-actions">
+                                <a href="#"><i class="fas fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal4"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h5>Running Shoes</h5>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-1">(15)</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="product-price">MK 65,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="banner-content">
+                            <h3>Summer Sale</h3>
+                            <p>Up to 50% off on selected items</p>
+                            <a href="#" class="btn btn-secondary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="banner-content">
+                            <h3>New Arrivals</h3>
+                            <p>Check out the latest products</p>
+                            <a href="#" class="btn btn-secondary">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Products Carousel -->
+    <section class="latest-products">
+        <div class="container">
+            <h2 class="section-title">Latest Products</h2>
+            <div class="carousel-container">
+                <div id="latestProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal5"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Camera</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="text-muted ms-1">(12)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 120,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal6"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Perfume</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="text-muted ms-1">(8)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 25,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
+                                            <span class="product-badge">Hot</span>
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal7"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Watch</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <span class="text-muted ms-1">(27)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 55,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal8"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Headphones</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <span class="text-muted ms-1">(19)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 42,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal9"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Running Shoes</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="text-muted ms-1">(15)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 65,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal10"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Camera</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="text-muted ms-1">(12)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 120,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80');">
+                                            <span class="product-badge">New</span>
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal11"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Bluetooth Speaker</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <span class="text-muted ms-1">(32)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 35,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80');">
+                                            <div class="product-actions">
+                                                <a href="#"><i class="fas fa-heart"></i></a>
+                                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal12"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5>Smart Watch</h5>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span class="text-muted ms-1">(18)</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="product-price">MK 85,000</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#latestProductsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#latestProductsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>MalawiMart</h5>
+                    <p>Your trusted online marketplace in Malawi. We bring you the best products at affordable prices with fast delivery across the country.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Deals</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Customer Service</h5>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Lilongwe, Malawi</li>
+                        <li><i class="fas fa-phone me-2"></i> +265 888 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@malawimart.com</li>
+                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 8:00 AM - 5:00 PM</li>
+                    </ul>
+                    <h6 class="mt-4">Newsletter</h6>
+                    <p>Subscribe to get special offers and updates</p>
+                    <form id="newsletterForm">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your email" required>
+                            <button class="btn btn-secondary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> MalawiMart. All rights reserved. | <span id="visitorCount">1000+</span> happy customers served</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <div class="scroll-up-btn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Product Modals -->
+    <!-- Modal 1 -->
+    <div class="modal fade" id="productModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Wireless Headphones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-modal-img">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wireless Headphones">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-modal-price">MK 45,000 <span class="product-old-price">MK 60,000</span></div>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted ms-1">(24 reviews)</span>
+                            </div>
+                            <p class="product-modal-description">Premium wireless headphones with noise cancellation, 30-hour battery life, and comfortable over-ear design. Perfect for music lovers and professionals.</p>
+                            <ul class="product-details-list">
+                                <li>Active Noise Cancellation</li>
+                                <li>30-hour battery life</li>
+                                <li>Bluetooth 5.0</li>
+                                <li>Quick charge (15 min = 3 hours)</li>
+                                <li>Comfortable over-ear design</li>
+                            </ul>
+                            <div class="d-grid gap-2 d-md-flex mt-4">
+                                <button class="btn btn-primary me-md-2"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                                <button class="btn btn-outline-primary"><i class="fas fa-heart me-2"></i>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="productModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Smart Watch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-modal-img">
+                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80" alt="Smart Watch">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-modal-price">MK 85,000</div>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-1">(18 reviews)</span>
+                            </div>
+                            <p class="product-modal-description">Advanced smartwatch with health monitoring, GPS, and smartphone connectivity. Track your fitness goals and stay connected on the go.</p>
+                            <ul class="product-details-list">
+                                <li>Heart rate monitoring</li>
+                                <li>GPS tracking</li>
+                                <li>Water resistant (50m)</li>
+                                <li>7-day battery life</li>
+                                <li>Smart notifications</li>
+                            </ul>
+                            <div class="d-grid gap-2 d-md-flex mt-4">
+                                <button class="btn btn-primary me-md-2"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                                <button class="btn btn-outline-primary"><i class="fas fa-heart me-2"></i>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Scroll Up Button Functionality
+            const scrollUpBtn = document.querySelector('.scroll-up-btn');
+            
+            // Show/hide scroll up button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollUpBtn.classList.add('active');
+                    document.querySelector('.main-header').classList.add('scrolled');
+                } else {
+                    scrollUpBtn.classList.remove('active');
+                    document.querySelector('.main-header').classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll to top when button is clicked
+            scrollUpBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Newsletter form submission
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`Thank you for subscribing with ${email}! You'll receive our latest offers soon.`);
+                    this.reset();
+                });
+            }
+            
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.fa-shopping-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h5').textContent;
+                    alert(`${productName} added to cart!`);
+                    
+                    // In a real implementation, you would update the cart count here
+                });
+            });
+            
+            // Add to wishlist functionality
+            const addToWishlistButtons = document.querySelectorAll('.fa-heart');
+            addToWishlistButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h5').textContent;
+                    alert(`${productName} added to wishlist!`);
+                    
+                    // In a real implementation, you would update the wishlist count here
+                });
+            });
+            
+            // Search functionality
+            const searchForm = document.querySelector('.search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const searchTerm = this.querySelector('input').value;
+                    if (searchTerm.trim() !== '') {
+                        alert(`Searching for: ${searchTerm}`);
+                        // In a real implementation, you would redirect to search results page
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
